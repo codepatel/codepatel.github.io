@@ -12,7 +12,7 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "astro": "^5.12.8",
+    "astro": "^5.13.5",
     "astro-loader-obsidian": "^0.9.1",
     "astro-spaceship": "^0.9.3",
     "sharp": "^0.32.5",
