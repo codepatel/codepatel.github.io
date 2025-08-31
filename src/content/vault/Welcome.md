@@ -1,10 +1,16 @@
+---
+tags:
+---
 Welcome to the knowledge sharing by *codepatel* !
 
 Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)!
 
-For more, browse links on the left sidebar to check out the [[Team Retrospective tool|Products]], [[The-4Ms-Framework|Resources]], or [[LinkedIn Saved Posts]] for curated content
+For more, browse links on the left sidebar to check out the [[Team Retrospective tool|Products]], [[The-4Ms-Framework|Resources]], and [[LinkedIn Saved Posts]] for curated content.
 
-Here is my [[Latest|Blog]] and [Resume](https://resume.github.io/?codepatel)
+- [[Latest|Blog]] 
+- [LinkedIn Profile](https://www.linkedin.com/in/hardikp/)
+- [X](https://x.com/hardiksp)
+- [Resume powered by GitHub](https://resume.github.io/?codepatel)
 ## Why subscribe?
 
 Subscribe to get full access to the newsletter and [website](https://hardiksp.substack.com/archive). Never miss an update.
