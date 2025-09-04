@@ -3,7 +3,8 @@ tags:
   - cta
 ---
 Welcome to the knowledge sharing by *codepatel* !
-<!-- Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)! -->
+Make a note of something, [[create a link]]
+<!-- , or try [the Importer](https://help.obsidian.md/Plugins/Importer)! -->
 For more, browse links on the left sidebar to check out the [[Team Retrospective tool|Products]], [[The-4Ms-Framework|Resources]], and [[LinkedIn Saved Posts]] for curated content.
 
 About me:
