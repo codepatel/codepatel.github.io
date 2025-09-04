@@ -2,7 +2,10 @@
 dist/
 # generated types
 .astro/
-.obsidian/
+
+#.obsidian
+data.json
+workspace.json
 
 # dependencies
 node_modules/
@@ -21,4 +24,3 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 Icon
-

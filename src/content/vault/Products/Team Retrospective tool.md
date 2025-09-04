@@ -2,6 +2,7 @@
 tags:
   - agile
   - risk-management
+  - cta
 ---
 How to create a truly collaborative real-time retrospective experience? Here is one way: You'll get a true real-time synchronization with feedback updates across multiple team members in parallel using this web application tool created specifically for this purpose.
 
