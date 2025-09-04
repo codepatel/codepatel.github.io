@@ -1,6 +1,6 @@
 ---
 tags:
-publish: false
+publish: true
 ---
 
 Put more content to organize and share!
