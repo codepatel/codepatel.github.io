@@ -39,7 +39,7 @@ jobs:
 
       - name: Fetch SOURCE branch
         run: |
-          git fetch origin ${{ env.SOURCE }}:${{ env.TARGET }}
+          git fetch origin ${{ env.TARGET }}:${{ env.SOURCE }}
           
       - name: Merge SOURCE into TARGET (2-way merge)
         id: merge
