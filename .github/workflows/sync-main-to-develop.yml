@@ -1,0 +1,83 @@
+name: Sync main <-> develop to even both branches
+
+on:
+  # Trigger the workflow every time you push to the `main` branch
+  # Using a different branch name? Replace `main` with your branch’s name
+  push:
+    branches: [ develop ]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+permissions:
+  contents: write              # required to push back to the repo
+  pull-requests: write         # required to open PRs on conflict
+
+concurrency:
+  group: sync-main-to-staging
+  cancel-in-progress: false
+
+env:
+  SOURCE: develop
+  TARGET: main
+  GIT_AUTHOR_NAME: github-actions
+  GIT_AUTHOR_EMAIL: actions@github.com
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout TARGET branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET }}
+          fetch-depth: 0  # need full history for merge
+          
+      - name: Set bot identity
+        run: |
+          git config user.name  "${{ env.GIT_AUTHOR_NAME }}"
+          git config user.email "${{ env.GIT_AUTHOR_EMAIL }}"
+
+      - name: Fetch SOURCE branch
+        run: |
+          git fetch origin ${{ env.SOURCE }}:${{ env.TARGET }}
+          
+      - name: Merge SOURCE into TARGET (2-way merge)
+        id: merge
+        run: |
+          # Is TARGET an ancestor of SOURCE? If yes, fast-forward; else create a merge commit.
+          if git merge-base --is-ancestor origin/$TARGET origin/$SOURCE; then
+            # git reset --hard origin/$SOURCE   # fast-forward in one step
+            git merge --ff-only $SOURCE  # Merge from SOURCE HEAD
+            echo "merged=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Target has diverged; not fast-forwardable. Create a merge commit."
+            set -e
+            # Try a non-interactive merge
+            if git merge --no-ff -S -m "Merge for ${{ env.SOURCE }} -> ${{ env.TARGET }}" ${{ env.SOURCE }}; then  # Merge from SOURCE HEAD with signature
+              echo "merged=true" >> "$GITHUB_OUTPUT"
+              git push origin HEAD:$TARGET
+              git checkout $SOURCE  # switch to SOURCE for the other way merge
+              git pull
+              git merge $TARGET  # Merge from TARGET tip to even the SOURCE branch
+              git push  # Push to remote-origin SOURCE branch
+            else
+              echo "merged=false" >> "$GITHUB_OUTPUT"
+              # Abort partial merge so the working tree is clean for PR creation
+              git merge --abort || true
+            fi
+          fi
+
+      # If merge conflicts, open a PR to resolve them
+      - name: Create PR for conflicts
+        if: steps.merge.outputs.merged != 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: "bot/sync-${{ env.SOURCE }}-to-${{ env.TARGET }}"
+          title: "Sync ${SOURCE} → ${TARGET} (conflict resolution needed)"
+          body: |
+            This automated workflow attempted to merge **${{ env.SOURCE }}** into **${{ env.TARGET }}** but hit conflicts.
+            Please resolve the conflicts and merge.
+          commit-message: "chore: prepare conflict-resolution PR for ${SOURCE} → ${TARGET}"
+          base: ${{ env.TARGET }}
+          labels: sync, automation
+          
