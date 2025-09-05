@@ -14,7 +14,12 @@ export default {
       author: config.author,
       base: ENV.OBSIDIAN_VAULT_DIR ?? DEFAULT_VAULT_DIR,
       url: '',
-      wikilinkFields: ['relateds']
+      wikilinkFields: ['relateds'],
+      pattern: [
+        "**/*.md", // include all markdown files AND
+        "!**/drafts/**/*.md", // exclude all folders named draft
+        "!**/*.draft.md" // exclude all files with extension  .draft.md
+	  ]
     }),
     schema: ({ image }) => DocumentSchema.extend({
       images: ObsidianWikiLinkSchema.extend({
@@ -24,4 +29,4 @@ export default {
       image: image().optional(),
     }),
   })
-}
+};

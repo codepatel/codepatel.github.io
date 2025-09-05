@@ -15,5 +15,5 @@ tags:
 	- [9 Unfair Advantage Laws](https://www.linkedin.com/posts/chrismmullen_9-unfair-advantage-laws-activity-7367184247134064640-Ufes/)
 - ### Life:
 	- h
-- ### Investing:
+- ### Investing: ^5a68a9
 	- h

@@ -5,11 +5,12 @@ tags:
 Welcome to the knowledge sharing by *codepatel* !
 Make a note of something, [[create a link]]
 <!-- , or try [the Importer](https://help.obsidian.md/Plugins/Importer)! -->
-For more, browse links on the left sidebar to check out the [[Team Retrospective tool|Products]], [[The-4Ms-Framework|Resources]], and [[LinkedIn Saved Posts]] for curated content.
+For more, browse links on the left sidebar to check out the [[Team Retrospective tool|Products]], [[Discounted Cash Flow Analysis|Projects]], [[The-4Ms-Framework|Resources]] and [[LinkedIn Saved Posts]] for curated content.
 
 About me:
 - [[Latest|Blog]]
 - [LinkedIn Profile](https://www.linkedin.com/in/hardikp/)
+- [Medium](https://hardiksp.medium.com/)
 - [X](https://x.com/hardiksp)
 - [GitHub Profile](https://github.com/codepatel) and [Resume powered by GitHub](https://resume.github.io/?codepatel)
 ## Why subscribe?
